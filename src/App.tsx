@@ -1,6 +1,7 @@
 import React, { FC, useState, ChangeEvent } from "react";
 import "./App.css";
 import BookList from "./Components/BookList";
+import Navbar from "./Components/Navbar";
 import { IBook } from "./Interfaces";
 
 const App: FC = () => {
@@ -35,27 +36,38 @@ const App: FC = () => {
 
   return (
     <div className="app">
+      <Navbar />
+      <h3>Add a book here</h3>
       <div className="header">
         <div className="input-container">
+          <label>Book Title:</label>
           <input
             type="text"
             name="book"
-            placeholder="Book Title"
+            placeholder="Title"
             value={book}
             onChange={handleChange}
           />
+          <label>Book Auther:</label>
+          <input
+            type="text"
+            name="author"
+            placeholder="Author"
+            // value={author}
+            onChange={handleChange}
+          />
+          <label>Pages:</label>
           <input
             type="number"
             name="pages"
-            placeholder="Pages"
             value={pages}
             onChange={handleChange}
           />
         </div>
         <button onClick={addBook}>Add Book</button>
       </div>
+      <h3>Your BookList:</h3>
       <div className="bookList">
-        <h1>Your BookList:</h1>
         {bookList.map((book: IBook, i: number) => {
           return <BookList key={i} book={book} bookRead={bookRead} />;
         })}

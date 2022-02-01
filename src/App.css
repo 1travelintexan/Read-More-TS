@@ -2,22 +2,64 @@ body {
   margin: 0;
   padding: 0;
 }
+
+.navbar {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 150px;
+  padding: 10px;
+  background-color: rgb(28, 0, 155);
+  margin-bottom: 30px;
+}
+.nav-container {
+  position: absolute;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.navbar h1 {
+  color: white;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-size: 5rem;
+}
+
+.logo {
+  height: 125px;
+  width: 125px;
+  background-color: rgb(254, 254, 254);
+  border-radius: 62.5px;
+  margin-left: 20px;
+}
+
+h3 {
+  font-size: 4rem;
+  color: rgb(28, 0, 155);
+  padding: 0;
+  margin: 0px;
+}
+
 .app {
   display: flex;
   align-items: center;
   flex-direction: column;
   width: 100vw;
   height: 100vh;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 .header {
   flex: 30%;
-  background-color: rgb(28, 0, 155);
-  width: 100%;
+  background-color: rgb(80, 99, 209);
+  width: 50%;
+  padding: 30px;
+  margin-bottom: 60px;
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
+  border-radius: 20px;
+  box-shadow: 4px 4px 8px gray;
 }
 
 .input-container {
@@ -25,44 +67,47 @@ body {
   flex-direction: column;
 }
 
+label {
+  color: white;
+  font-size: 2rem;
+}
+
 .header input {
-  border-bottom-left-radius: 10px;
-  border-top-left-radius: 10px;
+  border-radius: 5px;
   height: 50px;
-  width: 300px;
+  width: 400px;
   font-size: 25px;
+  margin-bottom: 10px;
 }
 .header button {
   background-color: rgb(10, 194, 50);
   color: white;
-  height: 100px;
-  width: 150px;
+  height: 75px;
+  width: 100px;
   margin: 10px;
-  font-size: 30px;
-  border-bottom-right-radius: 10px;
-  border-top-right-radius: 10px;
+  font-size: 1.2rem;
+  border-radius: 20px;
 }
 
 .bookList {
   flex: 70%;
-  width: 100%;
+  width: 80%;
   display: flex;
   align-items: center;
-  padding-top: 50px;
-  flex-direction: column;
+  flex-wrap: wrap;
+  padding-top: 10px;
+  background-color: rgb(180, 190, 250);
 }
 
 .book {
-  width: 500px;
-  height: 30px;
+  width: 300px;
   display: flex;
+  flex-direction: column;
   color: rgb(255, 254, 254);
   margin: 15px;
 }
 
 .bookList .book {
-  flex: 80%;
-  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -71,35 +116,32 @@ body {
 .bookList .book span {
   display: grid;
   place-items: center;
-  border: 5px solid rgb(19, 4, 155);
-  color: rgb(19, 4, 155);
+  background-color: rgb(31, 21, 238);
+  box-shadow: 4px 4px 8px gray;
+  text-shadow: 2px 2px 2px black;
+  color: rgb(245, 177, 6);
+  font-family: fantasy;
   width: 100%;
-  height: 50px;
+  height: 200px;
   font-size: 35px;
   padding: 5px;
-  background-color: rgb(253, 253, 253);
 }
 .bookList button {
-  width: 100px;
+  width: 50px;
   height: 50px;
   border: none;
   background-color: rgb(10, 194, 50);
   border-radius: 25px;
   color: white;
   cursor: pointer;
-  margin-left: 10px;
+  margin-top: 10px;
 }
 
 .list {
-  height: 100%;
-  width: 80%;
   padding: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-image: url("../public/blueBook.jpeg");
-  background-repeat: no-repeat;
-  background-size: cover;
 }
 
 .bookList button:hover {
