@@ -48,7 +48,7 @@ const App: FC = () => {
             value={book}
             onChange={handleChange}
           />
-          <label>Book Auther:</label>
+          <label>Book Author:</label>
           <input
             type="text"
             name="author"

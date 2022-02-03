@@ -8,9 +8,12 @@ interface Props {
 function BookList({ book, bookRead }: Props) {
   return (
     <div className="list">
-      <div className="book">
-        <span>{book.bookName}</span>
-        <span>{book.pages} pages</span>
+      <div className="bookListContainer">
+        <div className="book">
+          <span className="bookListName">{book.bookName}</span>
+          {/* <span className="bookListAuthor">{book.author} pages</span> */}
+          <span className="bookListPages">{book.pages} pages</span>
+        </div>
         <button
           onClick={() => {
             bookRead(book.bookName);

@@ -82,11 +82,11 @@ label {
 .header button {
   background-color: rgb(10, 194, 50);
   color: white;
-  height: 75px;
-  width: 100px;
   margin: 10px;
-  font-size: 1.2rem;
+  padding: 20px;
+  font-size: 2rem;
   border-radius: 20px;
+  border: 3px solid rgba(255, 255, 255, 0);
 }
 
 .bookList {
@@ -100,41 +100,46 @@ label {
 }
 
 .book {
-  width: 300px;
+  width: 400px;
+  height: 550px;
   display: flex;
   flex-direction: column;
-  color: rgb(255, 254, 254);
-  margin: 15px;
-}
-
-.bookList .book {
-  display: flex;
-  justify-content: center;
   align-items: center;
+  color: rgb(255, 254, 254);
+  margin: 5px;
+  background-image: url("../public/blueBook.jpeg");
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 .bookList .book span {
-  display: grid;
-  place-items: center;
-  background-color: rgb(31, 21, 238);
-  box-shadow: 4px 4px 8px gray;
   text-shadow: 2px 2px 2px black;
   color: rgb(245, 177, 6);
   font-family: fantasy;
+  text-align: center;
   width: 100%;
-  height: 200px;
+  height: 100%;
   font-size: 35px;
   padding: 5px;
+  margin-top: 10px;
 }
 .bookList button {
-  width: 50px;
-  height: 50px;
-  border: none;
+  width: 3rem;
+  height: 3rem;
+  border: 2px solid rgba(255, 255, 255, 0);
+  font-size: 1.5rem;
   background-color: rgb(10, 194, 50);
-  border-radius: 25px;
+  border-radius: 1.5rem;
   color: white;
   cursor: pointer;
   margin-top: 10px;
+}
+.bookListContainer {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 }
 
 .list {
@@ -145,6 +150,9 @@ label {
 }
 
 .bookList button:hover {
-  box-shadow: 2px 2px 8px white;
-  color: blue;
+  border: 3px solid white;
+}
+.header button:hover {
+  border: 3px solid white;
+  box-shadow: 4px 4px 8px rgb(49, 49, 230);
 }
