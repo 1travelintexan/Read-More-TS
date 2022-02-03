@@ -10,9 +10,9 @@ function BookList({ book, bookRead }: Props) {
     <div className="list">
       <div className="bookListContainer">
         <div className="book">
-          <span className="bookListName">{book.bookName}</span>
-          {/* <span className="bookListAuthor">{book.author} pages</span> */}
-          <span className="bookListPages">{book.pages} pages</span>
+          <span id="bookTitle">{book.bookName}</span>
+          <span>By: {book.bookAuthor}</span>
+          <span>{book.pages} pages</span>
         </div>
         <button
           onClick={() => {

@@ -6,12 +6,15 @@ import { IBook } from "./Interfaces";
 
 const App: FC = () => {
   const [book, setBook] = useState<string>("");
+  const [author, setAuthor] = useState<string>("");
   const [pages, setPages] = useState<number>(0);
   const [bookList, setBookList] = useState<IBook[]>([]);
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>): void => {
     if (event.target.name === "book") {
       setBook(event.target.value);
+    } else if (event.target.name === "author") {
+      setAuthor(event.target.value);
     } else {
       setPages(Number(event.target.value));
     }
@@ -20,10 +23,12 @@ const App: FC = () => {
   const addBook = (): void => {
     const newBook = {
       bookName: book,
+      bookAuthor: author,
       pages: pages,
     };
     setBook("");
     setPages(0);
+    setAuthor("");
     setBookList([...bookList, newBook]);
   };
 
@@ -53,7 +58,7 @@ const App: FC = () => {
             type="text"
             name="author"
             placeholder="Author"
-            // value={author}
+            value={author}
             onChange={handleChange}
           />
           <label>Pages:</label>
