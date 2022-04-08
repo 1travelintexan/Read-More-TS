@@ -1,82 +1,20 @@
-import React, { FC, useState, ChangeEvent } from "react";
+import { FC } from "react";
+import { Route, Routes } from "react-router-dom";
 import "./App.css";
+import AddBook from "./Components/AddBook";
 import BookList from "./Components/BookList";
 import Navbar from "./Components/Navbar";
-import { IBook } from "./Interfaces";
+import Profile from "./Components/Profile";
 
 const App: FC = () => {
-  const [book, setBook] = useState<string>("");
-  const [author, setAuthor] = useState<string>("");
-  const [pages, setPages] = useState<number>(0);
-  const [bookList, setBookList] = useState<IBook[]>([]);
-
-  const handleChange = (event: ChangeEvent<HTMLInputElement>): void => {
-    if (event.target.name === "book") {
-      setBook(event.target.value);
-    } else if (event.target.name === "author") {
-      setAuthor(event.target.value);
-    } else {
-      setPages(Number(event.target.value));
-    }
-  };
-
-  const addBook = (): void => {
-    const newBook = {
-      bookName: book,
-      bookAuthor: author,
-      pages: pages,
-    };
-    setBook("");
-    setPages(0);
-    setAuthor("");
-    setBookList([...bookList, newBook]);
-  };
-
-  const bookRead = (bookRead: string): void => {
-    let filteredBooks = bookList.filter((book) => {
-      return book.bookName !== bookRead;
-    });
-    setBookList(filteredBooks);
-  };
-
   return (
     <div className="app">
       <Navbar />
-      <h3>Add a book here</h3>
-      <div className="header">
-        <div className="input-container">
-          <label>Book Title:</label>
-          <input
-            type="text"
-            name="book"
-            placeholder="Title"
-            value={book}
-            onChange={handleChange}
-          />
-          <label>Book Author:</label>
-          <input
-            type="text"
-            name="author"
-            placeholder="Author"
-            value={author}
-            onChange={handleChange}
-          />
-          <label>Pages:</label>
-          <input
-            type="number"
-            name="pages"
-            value={pages}
-            onChange={handleChange}
-          />
-        </div>
-        <button onClick={addBook}>Add Book</button>
-      </div>
-      <h3>Your BookList:</h3>
-      <div className="bookList">
-        {bookList.map((book: IBook, i: number) => {
-          return <BookList key={i} book={book} bookRead={bookRead} />;
-        })}
-      </div>
+      <Routes>
+        <Route path="/profile" element={<Profile />} />
+        <Route path="/add-book" element={<AddBook />} />
+        <Route path="/book-list" element={<BookList />} />
+      </Routes>
     </div>
   );
 };
