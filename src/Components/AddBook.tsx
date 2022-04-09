@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useState, ChangeEvent } from "react";
 import { IBook } from "../Interfaces";
+import { API_URL } from "../config";
 
 function AddBook() {
   const [book, setBook] = useState<string>("");
@@ -25,13 +26,9 @@ function AddBook() {
       pages: pages,
     };
     console.log("here is the new book", newBook);
-    let response = await axios.post(
-      "http://localhost:5005/api/addbook",
-      newBook,
-      {
-        withCredentials: true,
-      }
-    );
+    let response = await axios.post(`${API_URL}/api/addbook`, newBook, {
+      withCredentials: true,
+    });
     console.log("here is the data", response.data);
     setBook("");
     setPages(0);

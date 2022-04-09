@@ -1,27 +1,64 @@
+import { useEffect, useState } from "react";
 import { IBook } from "../Interfaces";
+import axios from "axios";
+import { API_URL } from "../config";
 
 interface Props {
   book: IBook;
   bookRead(nameOfBook: string): void;
 }
+
 function BookList() {
+  type Book = {
+    _id: number;
+    bookName: string;
+    bookAuthor: string;
+    page: number;
+  };
+  const [allBooks, setAllBooks] = useState<Book[] | null>(null);
+  useEffect(() => {
+    try {
+      const getBooks = async () => {
+        let data = await axios.get<Book[]>(`${API_URL}/api/booklist`, {
+          withCredentials: true,
+        });
+        let books = data.data;
+        await setAllBooks(books);
+        console.log("here are all the books", books);
+      };
+      getBooks();
+    } catch (err) {
+      console.log(err, "error");
+    }
+  }, []);
+
   return (
     <>
       <h3>Your BookList:</h3>
       <div className="list">
         <div className="bookListContainer">
-          {/* <div className="book"> */}
-          {/* <span id="bookTitle">{book.bookName}</span>
-            <span>By: {book.bookAuthor}</span>
-            <span>{book.pages} pages</span>
-          </div>
-          <button
-            onClick={() => {
-              bookRead(book.bookName);
-            }}
-          >
+          {allBooks ? (
+            allBooks.map((elem, i: number) => {
+              return <p key={i}>{elem.bookName}</p>;
+            })
+          ) : (
+            <p>Loading...</p>
+          )}
+
+          {/* {
+        allBooks.map((elem, i)=>{
+          return (
+            <div className="book"> 
+            <span id="bookTitle">{elem.bookName}</span>
+            <span>By: {elem.bookAuthor}</span>
+            <span>{elem.pages} pages</span>
+            </div>
+              <button>
             X
-          </button> */}
+          </button>
+          )
+        })
+        }  */}
         </div>
       </div>
     </>

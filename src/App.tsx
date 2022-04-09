@@ -5,7 +5,6 @@ import AddBook from "./Components/AddBook";
 import BookList from "./Components/BookList";
 import Navbar from "./Components/Navbar";
 import Profile from "./Components/Profile";
-
 const App: FC = () => {
   return (
     <div className="app">
