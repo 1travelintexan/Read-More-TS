@@ -3,11 +3,6 @@ import { IBook } from "../Interfaces";
 import axios from "axios";
 import { API_URL } from "../config";
 
-interface Props {
-  book: IBook;
-  bookRead(nameOfBook: string): void;
-}
-
 function BookList() {
   type Book = {
     _id: number;
