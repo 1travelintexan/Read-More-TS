@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import AddBook from "./Components/AddBook";
@@ -11,9 +11,11 @@ import Login from "./Components/Login";
 import { API_URL } from "./config";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { User } from "./Interfaces";
 
 const App: FC = () => {
   const navigate = useNavigate();
+  const [user, setUser] = useState<User>({ username: "", _id: 0 });
 
   function handleSignUp(user: { username: string; password: string }) {
     axios
@@ -38,8 +40,7 @@ const App: FC = () => {
       })
       .then((res) => {
         console.log(res.data);
-      })
-      .then(() => {
+        setUser(res.data);
         navigate("/profile");
       })
       .catch((err) => {
@@ -54,7 +55,7 @@ const App: FC = () => {
         <Route path="/" element={<Home />} />
         <Route path="/signup" element={<SignUp onSignUp={handleSignUp} />} />
         <Route path="/login" element={<Login onLogin={handleLogin} />} />
-        <Route path="/profile" element={<Profile />} />
+        <Route path="/profile" element={<Profile currentUser={user} />} />
         <Route path="/add-book" element={<AddBook />} />
         <Route path="/book-list" element={<BookList />} />
       </Routes>

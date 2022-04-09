@@ -3,3 +3,8 @@ export interface IBook {
   bookAuthor: string;
   pages: number;
 }
+
+export interface User {
+  _id: number;
+  username: string;
+}

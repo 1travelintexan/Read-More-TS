@@ -2,8 +2,13 @@ import axios from "axios";
 import { API_URL } from "../config";
 import BookList from "../Components/BookList";
 import { useNavigate } from "react-router-dom";
+import { User } from "../Interfaces";
+interface IProps {
+  //here you can declare the return type (here is void)
+  currentUser: User;
+}
 
-function Profile() {
+function Profile({ currentUser }: IProps) {
   const navigate = useNavigate();
   async function handleLogout() {
     let response = await axios.post(
@@ -19,6 +24,11 @@ function Profile() {
   return (
     <div>
       <div>
+        {currentUser.username ? (
+          <h1>Welcome {currentUser.username}!</h1>
+        ) : (
+          <p>Loading</p>
+        )}
         <button onClick={handleLogout}>Logout</button>
       </div>
     </div>
