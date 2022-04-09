@@ -14,7 +14,7 @@ function BookList() {
   useEffect(() => {
     try {
       const getBooks = async () => {
-        let data = await axios.get<Book[]>(`${API_URL}/api/booklist`, {
+        let data = await axios.get<Book[]>(`${API_URL}/book-list`, {
           withCredentials: true,
         });
         let books = data.data;

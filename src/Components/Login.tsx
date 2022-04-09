@@ -2,10 +2,10 @@ import { useState } from "react";
 
 interface FuncProps {
   //here you can declare the return type (here is void)
-  onSignUp: (props: { username: string; password: string }) => void;
+  onLogin: (props: { username: string; password: string }) => void;
 }
 
-function SignUp({ onSignUp = () => {} }: FuncProps) {
+function Login({ onLogin = () => {} }: FuncProps) {
   const [user, setUser] = useState({ username: "", password: "" });
 
   function handleChange(e: any) {
@@ -15,14 +15,14 @@ function SignUp({ onSignUp = () => {} }: FuncProps) {
       [e.target.name]: value,
     });
   }
-  function handleSubmit(e: any) {
+  function handleLogin(e: any) {
     e.preventDefault();
-    onSignUp(user);
+    onLogin(user);
   }
   return (
     <div>
-      <h1>Signin</h1>
-      <form onSubmit={handleSubmit}>
+      <h1>Login</h1>
+      <form onSubmit={handleLogin}>
         <label htmlFor="username" style={{ color: "black" }}>
           Username:
         </label>
@@ -42,10 +42,10 @@ function SignUp({ onSignUp = () => {} }: FuncProps) {
           placeholder="Enter your password"
           onChange={handleChange}
         />
-        <button>Sign Up!</button>
+        <button>Login!</button>
       </form>
     </div>
   );
 }
 
-export default SignUp;
+export default Login;

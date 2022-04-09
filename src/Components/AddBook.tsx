@@ -7,6 +7,7 @@ function AddBook() {
   const [book, setBook] = useState<string>("");
   const [author, setAuthor] = useState<string>("");
   const [pages, setPages] = useState<number>(0);
+  const [image, setImage] = useState<string>("");
   const [bookList, setBookList] = useState<IBook[]>([]);
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>): void => {
@@ -24,6 +25,7 @@ function AddBook() {
       bookName: book,
       bookAuthor: author,
       pages: pages,
+      image: image,
     };
     console.log("here is the new book", newBook);
     let response = await axios.post(`${API_URL}/api/addbook`, newBook, {
@@ -33,15 +35,16 @@ function AddBook() {
     setBook("");
     setPages(0);
     setAuthor("");
+    setImage("");
     setBookList([...bookList, newBook]);
   };
 
-  const bookRead = (bookRead: string): void => {
-    let filteredBooks = bookList.filter((book) => {
-      return book.bookName !== bookRead;
-    });
-    setBookList(filteredBooks);
-  };
+  //   const bookRead = (bookRead: string): void => {
+  //     let filteredBooks = bookList.filter((book) => {
+  //       return book.bookName !== bookRead;
+  //     });
+  //     setBookList(filteredBooks);
+  //   };
 
   return (
     <div>
@@ -70,6 +73,13 @@ function AddBook() {
             type="number"
             name="pages"
             value={pages}
+            onChange={handleChange}
+          />
+          <label>Image:</label>
+          <input
+            type="text"
+            name="image"
+            value={image}
             onChange={handleChange}
           />
         </div>
