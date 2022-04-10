@@ -4,7 +4,7 @@ function Home() {
   return (
     <div>
       <div>
-        <h1>New Here? Signup to enter</h1>
+        <h1>New Here?</h1>
         <Link to={"/signup"}>Signup</Link>
       </div>
       <div>

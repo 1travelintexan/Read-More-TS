@@ -3,6 +3,7 @@ import { API_URL } from "../config";
 import BookList from "../Components/BookList";
 import { useNavigate } from "react-router-dom";
 import { User } from "../Interfaces";
+import UserImage from "./UserImage";
 interface IProps {
   //here you can declare the return type (here is void)
   currentUser: User;
@@ -30,6 +31,7 @@ function Profile({ currentUser }: IProps) {
           <p>Loading</p>
         )}
         <button onClick={handleLogout}>Logout</button>
+        <UserImage />
       </div>
     </div>
   );

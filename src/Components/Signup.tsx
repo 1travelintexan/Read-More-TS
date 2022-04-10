@@ -21,7 +21,7 @@ function SignUp({ onSignUp = () => {} }: FuncProps) {
   }
   return (
     <div>
-      <h1>Signin</h1>
+      <h1>Sign Up!</h1>
       <form onSubmit={handleSubmit}>
         <label htmlFor="username" style={{ color: "black" }}>
           Username:
