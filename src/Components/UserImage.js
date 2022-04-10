@@ -1,27 +1,27 @@
 import axios from "axios";
-import React from "react";
 import { API_URL } from "../config";
 
 function UserImage() {
-  async function handleImage(event) {
-    event.preventDefault();
-    //how to grab the value of the image
-    let image = event.target.userImage.files[0];
+  async function handleUserImage(e) {
+    e.preventDefault();
+    let image = e.target.imageUrl.files[0];
     let imageFormData = new FormData();
     imageFormData.append("userImage", image);
-    let imageResponse = await axios.post(
-      `${API_URL}/image-upload`,
-      imageFormData,
-      { withCredentials: true }
-    );
-    console.log("response from image route", imageResponse);
+    console.log("here is the image before", imageFormData, image);
+    let imageResponse = await axios.post(`${API_URL}/upload`, imageFormData, {
+      withCredentials: true,
+    });
+    console.log("response from db", imageResponse);
   }
-
   return (
     <div>
-      <form onSubmit={handleImage} method="post" encType="multipart/form-data">
-        <input type="file" name="userImage" />
-        <button>Add Image</button>
+      <form
+        method="POST"
+        onSubmit={handleUserImage}
+        encType="multipart/form-data"
+      >
+        <input type="file" name="imageUrl" accept="image/png, image/jpg" />
+        <button type="submit">Submit</button>
       </form>
     </div>
   );

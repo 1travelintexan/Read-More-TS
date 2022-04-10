@@ -1,16 +1,22 @@
 import axios from "axios";
 import { API_URL } from "../config";
+import { IProps } from "../Interfaces";
 import BookList from "../Components/BookList";
 import { useNavigate } from "react-router-dom";
 import { User } from "../Interfaces";
 import UserImage from "./UserImage";
-interface IProps {
-  //here you can declare the return type (here is void)
-  currentUser: User;
-}
+import { useEffect } from "react";
 
 function Profile({ currentUser }: IProps) {
   const navigate = useNavigate();
+
+  useEffect(() => {
+    async function getData() {
+      let userResponse = await axios.get(`${API_URL}/`);
+      console.log("resp", userResponse);
+    }
+    getData();
+  }, []);
   async function handleLogout() {
     let response = await axios.post(
       `${API_URL}/logout`,
@@ -22,6 +28,7 @@ function Profile({ currentUser }: IProps) {
     navigate("/");
     console.log("Logout response", response);
   }
+  //console.log("current user", currentUser);
   return (
     <div>
       <div>

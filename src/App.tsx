@@ -1,4 +1,4 @@
-import { FC, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import AddBook from "./Components/AddBook";
@@ -12,10 +12,27 @@ import { API_URL } from "./config";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { User } from "./Interfaces";
+import { IBook } from "./Interfaces";
 
 const App: FC = () => {
   const navigate = useNavigate();
-  const [user, setUser] = useState<User>({ username: "", _id: 0 });
+  const [user, setUser] = useState<User>({ username: "", _id: 0, image: "" });
+  const [books, setBooks] = useState<IBook[]>();
+
+  useEffect(() => {
+    async function getData() {
+      let userResponse = await axios.get(`${API_URL}/user`, {
+        withCredentials: true,
+      });
+      console.log("component did mount response", userResponse.data);
+      let username = userResponse.data.username;
+      let _id = userResponse.data._id;
+      let image = userResponse.data.image;
+
+      setUser({ username, image, _id });
+    }
+    getData();
+  }, []);
 
   function handleSignUp(user: { username: string; password: string }) {
     axios
@@ -24,6 +41,8 @@ const App: FC = () => {
       })
       .then((res) => {
         console.log(res.data);
+        setUser(res.data);
+        navigate("/profile");
       })
       .then(() => {
         navigate("/profile");
@@ -39,7 +58,7 @@ const App: FC = () => {
         withCredentials: true,
       })
       .then((res) => {
-        console.log(res.data);
+        console.log("login data", res.data);
         setUser(res.data);
         navigate("/profile");
       })
