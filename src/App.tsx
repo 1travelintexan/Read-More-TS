@@ -16,20 +16,28 @@ import { IBook } from "./Interfaces";
 
 const App: FC = () => {
   const navigate = useNavigate();
-  const [user, setUser] = useState<User>({ username: "", _id: 0, image: "" });
+  const [user, setUser] = useState<User>({
+    username: "",
+    _id: 0,
+    imageUrl: "",
+  });
   const [books, setBooks] = useState<IBook[]>();
 
   useEffect(() => {
     async function getData() {
-      let userResponse = await axios.get(`${API_URL}/user`, {
-        withCredentials: true,
-      });
-      console.log("component did mount response", userResponse.data);
-      let username = userResponse.data.username;
-      let _id = userResponse.data._id;
-      let image = userResponse.data.image;
+      try {
+        let userResponse = await axios.get(`${API_URL}/user`, {
+          withCredentials: true,
+        });
+        console.log("component did mount response", userResponse.data);
+        let username = userResponse.data.username;
+        let _id = userResponse.data._id;
+        let imageUrl = userResponse.data.image;
 
-      setUser({ username, image, _id });
+        setUser({ username, imageUrl, _id });
+      } catch (err) {
+        console.log("There was an error", err);
+      }
     }
     getData();
   }, []);
@@ -67,6 +75,7 @@ const App: FC = () => {
         navigate("/login");
       });
   }
+
   return (
     <div className="app">
       <Navbar />
@@ -74,7 +83,10 @@ const App: FC = () => {
         <Route path="/" element={<Home />} />
         <Route path="/signup" element={<SignUp onSignUp={handleSignUp} />} />
         <Route path="/login" element={<Login onLogin={handleLogin} />} />
-        <Route path="/profile" element={<Profile currentUser={user} />} />
+        <Route
+          path="/profile"
+          element={<Profile currentUser={user} setUser={setUser} />}
+        />
         <Route path="/add-book" element={<AddBook />} />
         <Route path="/book-list" element={<BookList />} />
       </Routes>

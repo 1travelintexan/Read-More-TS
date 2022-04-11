@@ -7,10 +7,15 @@ export interface IBook {
 export interface User {
   _id: number;
   username: string;
-  image: string;
+  imageUrl: string;
 }
 
 export interface IProps {
   //here you can declare the return type (here is void)
   currentUser: User;
+}
+
+export interface FuncProps {
+  //here you can declare the return type (here is void)
+  onSignUp: (props: { username: string; password: string }) => void;
 }

@@ -1,9 +1,5 @@
 import { useState } from "react";
-
-interface FuncProps {
-  //here you can declare the return type (here is void)
-  onSignUp: (props: { username: string; password: string }) => void;
-}
+import { FuncProps } from "../Interfaces";
 
 function SignUp({ onSignUp = () => {} }: FuncProps) {
   const [user, setUser] = useState({ username: "", password: "" });
