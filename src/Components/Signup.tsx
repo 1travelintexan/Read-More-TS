@@ -16,9 +16,9 @@ function SignUp({ onSignUp = () => {} }: FuncProps) {
     onSignUp(user);
   }
   return (
-    <div>
+    <div className="landing-page">
       <h1>Sign Up!</h1>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="form">
         <label htmlFor="username" style={{ color: "black" }}>
           Username:
         </label>

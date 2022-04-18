@@ -4,7 +4,7 @@ import { API_URL } from "../config";
 import BookList from "../Components/BookList";
 import { useNavigate, Link } from "react-router-dom";
 import { User } from "../Interfaces";
-import { Dispatch, SetStateAction, useEffect } from "react";
+import { Dispatch, SetStateAction } from "react";
 
 interface IProps {
   //here you can declare the return type (here is void)
@@ -14,25 +14,6 @@ interface IProps {
 
 function Profile({ currentUser, setUser }: IProps) {
   const navigate = useNavigate();
-
-  // useEffect(() => {
-  //   async function getData() {
-  //     try {
-  //       let userResponse = await axios.get(`${API_URL}/profile`, {
-  //         withCredentials: true,
-  //       });
-  //       console.log("profile response", userResponse.data);
-  //       let username = userResponse.data.username;
-  //       let _id = userResponse.data._id;
-  //       let imageUrl = userResponse.data.image;
-
-  //       setUser({ username, imageUrl, _id });
-  //     } catch (err) {
-  //       console.log("There was an error", err);
-  //     }
-  //   }
-  //   getData();
-  // }, []);
 
   async function handleLogout() {
     let response = await axios.post(
@@ -56,7 +37,7 @@ function Profile({ currentUser, setUser }: IProps) {
           Logout
         </button>
       </div>
-      <div>
+      <div className="profile-container">
         {currentUser ? (
           <h1>Welcome {currentUser.username}!</h1>
         ) : (

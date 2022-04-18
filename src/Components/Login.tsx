@@ -20,9 +20,9 @@ function Login({ onLogin = () => {} }: FuncProps) {
     onLogin(user);
   }
   return (
-    <div>
+    <div className="landing-page">
       <h1>Login</h1>
-      <form onSubmit={handleLogin}>
+      <form onSubmit={handleLogin} className="form">
         <label htmlFor="username" style={{ color: "black" }}>
           Username:
         </label>

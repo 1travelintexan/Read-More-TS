@@ -25,20 +25,48 @@ const App: FC = () => {
   });
   const [books, setBooks] = useState<IBook[]>();
 
+  //did mount useEffect
   useEffect(() => {
     async function getData() {
       try {
         let userResponse = await axios.get(`${API_URL}/user`, {
           withCredentials: true,
         });
-        console.log("component did mount response", userResponse.data);
-        let username = userResponse.data.username;
-        let _id = userResponse.data._id;
-        let imageUrl = userResponse.data.imageUrl;
+        let userDB = {
+          _id: userResponse.data._id,
+          username: userResponse.data.username,
+          imageUrl: userResponse.data.imageUrl,
+        };
+        setUser(userDB);
 
-        setUser({ username, imageUrl, _id });
+        // const headers = {
+        //   Accept: "application/json",
+        //   Authorization: "Bearer H_ndUBdI-Aqznfi-SVH0",
+        // };
+        // const fetchData = async () => {
+        //   const rawQuotes = await fetch("https://the-one-api.dev/v2/quote", {
+        //     headers: headers,
+        //   });
+        //   const quotes = await rawQuotes.json();
+        //   const quote =
+        //     quotes.docs[Math.floor(Math.random() * quotes.docs.length)];
+        //   console.log(quote.dialog);
+        //   //   const quote =
+        //   //     quotes.docs[Math.floor(Math.random() * quotes.docs.length)];
+        //   //   console.log("here", quote.dialog);
+        // };
+        // // const headers = {
+        // //   Accept: "application/json",
+        // //   Authorization: "Bearer H_ndUBdI-Aqznfi-SVH0",
+        // // };
+
+        // // let LOR = await axios.get(`https://the-one-api.dev/v2/quote`, {
+        // //   headers: headers,
+        // // });
+        // // console.log("LOR", LOR.data);
+        // fetchData();
       } catch (err) {
-        console.log("There was an error", err);
+        console.log("There was an error on mount", err);
       }
     }
     getData();

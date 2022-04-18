@@ -6,7 +6,6 @@ interface IProps {
 }
 
 function Navbar({ currentUser }: IProps) {
-  console.log("navbar props", currentUser);
   return (
     <div className="navbar">
       <img className="logo" src={bookImage} alt="books logo" />
