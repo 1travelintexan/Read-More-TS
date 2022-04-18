@@ -1,9 +1,10 @@
+import Button from "react-bootstrap/Button";
 import axios from "axios";
 import { API_URL } from "../config";
 import BookList from "../Components/BookList";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { User } from "../Interfaces";
-import { Dispatch, SetStateAction } from "react";
+import { Dispatch, SetStateAction, useEffect } from "react";
 
 interface IProps {
   //here you can declare the return type (here is void)
@@ -14,29 +15,24 @@ interface IProps {
 function Profile({ currentUser, setUser }: IProps) {
   const navigate = useNavigate();
 
-  function handleUserImage(event: any) {
-    event.preventDefault();
-    let image = event.target.imageUrl.files[0];
-    let imageFormData = new FormData();
-    imageFormData.append("imageUrl", image);
+  // useEffect(() => {
+  //   async function getData() {
+  //     try {
+  //       let userResponse = await axios.get(`${API_URL}/profile`, {
+  //         withCredentials: true,
+  //       });
+  //       console.log("profile response", userResponse.data);
+  //       let username = userResponse.data.username;
+  //       let _id = userResponse.data._id;
+  //       let imageUrl = userResponse.data.image;
 
-    async function sendImage() {
-      let updatedUser = await axios.post(`${API_URL}/upload`, imageFormData, {
-        withCredentials: true,
-      });
-      console.log("saved", updatedUser.data);
-      let _id = updatedUser.data._id;
-      let username = updatedUser.data.username;
-      let imageUrl = updatedUser.data.imageUrl;
-
-      setUser({
-        _id,
-        username,
-        imageUrl,
-      });
-    }
-    sendImage();
-  }
+  //       setUser({ username, imageUrl, _id });
+  //     } catch (err) {
+  //       console.log("There was an error", err);
+  //     }
+  //   }
+  //   getData();
+  // }, []);
 
   async function handleLogout() {
     let response = await axios.post(
@@ -52,32 +48,20 @@ function Profile({ currentUser, setUser }: IProps) {
 
   return (
     <div>
+      <div className="banner">
+        <Link to="/profile-image">
+          <Button variant="outline-secondary">Profile Image</Button>{" "}
+        </Link>
+        <button id="logout" onClick={handleLogout}>
+          Logout
+        </button>
+      </div>
       <div>
-        {/* {currentUser.imageUrl ? (
-          <img
-            src={currentUser.imageUrl}
-            alt="profile pic"
-            style={{ height: "100px" }}
-          /> */}
-        {/* ) : null} */}
         {currentUser ? (
           <h1>Welcome {currentUser.username}!</h1>
         ) : (
           <p>Loading</p>
         )}
-        <button onClick={handleLogout}>Logout</button>
-      </div>
-
-      <div>
-        <h3>Update your User Image:</h3>
-        <form
-          onSubmit={handleUserImage}
-          method="post"
-          encType="multipart/form-data"
-        >
-          <input type="file" accept="image/png, image/jpg" name="imageUrl" />
-          <button type="submit">Update</button>
-        </form>
       </div>
     </div>
   );

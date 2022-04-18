@@ -8,11 +8,13 @@ import Profile from "./Components/Profile";
 import SignUp from "./Components/Signup";
 import Home from "./Components/Home";
 import Login from "./Components/Login";
+import ProfileImage from "./Components/ProfileImage";
 import { API_URL } from "./config";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { User } from "./Interfaces";
 import { IBook } from "./Interfaces";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 const App: FC = () => {
   const navigate = useNavigate();
@@ -32,7 +34,7 @@ const App: FC = () => {
         console.log("component did mount response", userResponse.data);
         let username = userResponse.data.username;
         let _id = userResponse.data._id;
-        let imageUrl = userResponse.data.image;
+        let imageUrl = userResponse.data.imageUrl;
 
         setUser({ username, imageUrl, _id });
       } catch (err) {
@@ -78,7 +80,7 @@ const App: FC = () => {
 
   return (
     <div className="app">
-      <Navbar />
+      <Navbar currentUser={user} />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/signup" element={<SignUp onSignUp={handleSignUp} />} />
@@ -86,6 +88,10 @@ const App: FC = () => {
         <Route
           path="/profile"
           element={<Profile currentUser={user} setUser={setUser} />}
+        />
+        <Route
+          path="/profile-image"
+          element={<ProfileImage setUser={setUser} />}
         />
         <Route path="/add-book" element={<AddBook />} />
         <Route path="/book-list" element={<BookList />} />
