@@ -29,6 +29,7 @@ function SignUp({ onSignUp = () => {} }: FuncProps) {
           placeholder="Enter your username"
           onChange={handleChange}
         />
+
         <label htmlFor="password" style={{ color: "black" }}>
           Password:
         </label>

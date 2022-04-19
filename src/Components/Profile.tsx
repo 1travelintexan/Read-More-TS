@@ -43,6 +43,9 @@ function Profile({ currentUser, setUser }: IProps) {
         ) : (
           <p>Loading</p>
         )}
+        <Link to="/add-book">
+          <Button variant="outline-secondary">Add Book</Button>{" "}
+        </Link>
       </div>
     </div>
   );

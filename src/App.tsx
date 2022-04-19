@@ -9,12 +9,10 @@ import SignUp from "./Components/Signup";
 import Home from "./Components/Home";
 import Login from "./Components/Login";
 import ProfileImage from "./Components/ProfileImage";
-import { API_URL } from "./config";
-import { TOKEN } from "./config";
+import { API_URL, TOKEN } from "./config";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { User } from "./Interfaces";
-import { IBook } from "./Interfaces";
+import { User, IBook } from "./Interfaces";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 const App: FC = () => {
@@ -28,24 +26,25 @@ const App: FC = () => {
 
   //did mount useEffect
   useEffect(() => {
-    console.log(
-      "token",
-      TOKEN,
-      API_URL,
-      process.env.BEARER_TOKEN,
-      process.env.REACT_APP_SERVER_URL
-    );
     async function getData() {
       try {
         let userResponse = await axios.get(`${API_URL}/user`, {
           withCredentials: true,
         });
-        let userDB = {
-          _id: userResponse.data._id,
-          username: userResponse.data.username,
-          imageUrl: userResponse.data.imageUrl,
-        };
-        setUser(userDB);
+        if (userResponse.status === 200) {
+          console.log("all good");
+          let userDB = {
+            _id: userResponse.data._id,
+            username: userResponse.data.username,
+            imageUrl: userResponse.data.imageUrl,
+          };
+          console.log("component did mount", userDB);
+          setUser(userDB);
+          navigate("/profile");
+        } else {
+          console.log("Please log in first");
+          navigate("/");
+        }
 
         // const headers = {
         //   Accept: "application/json",

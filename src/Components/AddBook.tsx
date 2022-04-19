@@ -27,7 +27,6 @@ function AddBook() {
       pages: pages,
       image: image,
     };
-    console.log("here is the new book", newBook);
     let response = await axios.post(`${API_URL}/api/addbook`, newBook, {
       withCredentials: true,
     });
@@ -47,9 +46,8 @@ function AddBook() {
   //   };
 
   return (
-    <div>
-      {" "}
-      <h3>Add a book here</h3>
+    <div className="add-book-container">
+      <h1>* Add a book here *</h1>
       <div className="header">
         <div className="input-container">
           <label>Book Title:</label>

@@ -14,8 +14,7 @@ body {
   box-shadow: 0 0 20px rgb(207, 207, 207);
   border-radius: 10px;
   margin-top: 30px;
-  height: 70vh;
-  padding: 50px;
+  padding: 30px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -29,7 +28,7 @@ body {
 }
 .landing-page h1 {
   color: blue;
-  font-size: 4rem;
+  font-size: 3rem;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 .landing-page h3 {
@@ -38,9 +37,9 @@ body {
   border: 1px solid grey;
   box-shadow: 0 0 10px rgb(147, 147, 147);
   text-align: center;
-  padding: 20px;
+  padding: 10px;
   border-radius: 10px;
-  margin: 30px;
+  margin-bottom: 30px;
 }
 .landing-page h3:hover {
   box-shadow: 0 0 20px rgb(72, 72, 72);
@@ -84,19 +83,13 @@ body {
   border-radius: 10px;
 }
 .navbar {
-  width: 100vw;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  height: 150px;
-  background-color: rgb(28, 0, 155);
-}
-.nav-container {
-  position: absolute;
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
+  height: 200px;
+  background-color: rgb(28, 0, 155);
+  padding: 20px;
 }
 .navbar h1 {
   color: white;
@@ -109,18 +102,23 @@ body {
   width: 125px;
   background-color: rgb(254, 254, 254);
   border-radius: 62.5px;
-  margin-left: 20px;
 }
 
 .profile-container {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
 }
 .profile-container h1 {
   color: blue;
   font-size: 4rem;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.profile-image {
+  height: 125px;
+  width: 125px;
+  border-radius: 62.5px;
 }
 
 h3 {
@@ -251,4 +249,24 @@ label {
 .header button:hover {
   border: 3px solid white;
   box-shadow: 4px 4px 8px rgb(49, 49, 230);
+}
+
+.add-book-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.add-book-container h1 {
+  margin: 30px;
+  background-color: rgb(166, 102, 22);
+  color: rgb(239, 207, 166);
+  text-shadow: 10px 20px 30px black;
+  padding: 25px 20px 10px 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 20px grey;
+  font-size: 4rem;
+  font-family: fantasy;
+  font-weight: bold;
 }

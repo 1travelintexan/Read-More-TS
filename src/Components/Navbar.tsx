@@ -9,15 +9,15 @@ function Navbar({ currentUser }: IProps) {
   return (
     <div className="navbar">
       <img className="logo" src={bookImage} alt="books logo" />
-      <div className="nav-container">
-        <h1>KindleFlix</h1>
+      <div>
+        <h1>Read a book and chill</h1>
       </div>
       <div>
         {currentUser.imageUrl ? (
           <img
             src={currentUser.imageUrl}
             alt="profile pic"
-            style={{ height: "100px" }}
+            className="profile-image"
           />
         ) : null}
       </div>

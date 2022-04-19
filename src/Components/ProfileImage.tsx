@@ -1,4 +1,4 @@
-import React, { Dispatch, SetStateAction } from "react";
+import { Dispatch, SetStateAction } from "react";
 import axios from "axios";
 import { API_URL } from "../config";
 import { User } from "../Interfaces";
@@ -11,7 +11,6 @@ interface IProps {
 function ProfileImage({ setUser }: IProps) {
   const navigate = useNavigate();
 
-  //handle the image form data and setting the user
   function handleUserImage(event: any) {
     event.preventDefault();
     let image = event.target.imageUrl.files[0];
@@ -34,13 +33,14 @@ function ProfileImage({ setUser }: IProps) {
           imageUrl,
         });
 
-        //navigate("/profile");
+        navigate("/profile");
       } catch (err) {
         console.log("There was an error updating your image", err);
       }
     }
     sendImage();
   }
+
   return (
     <div>
       <div>
