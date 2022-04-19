@@ -10,6 +10,7 @@ import Home from "./Components/Home";
 import Login from "./Components/Login";
 import ProfileImage from "./Components/ProfileImage";
 import { API_URL } from "./config";
+import { TOKEN } from "./config";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { User } from "./Interfaces";
@@ -27,6 +28,13 @@ const App: FC = () => {
 
   //did mount useEffect
   useEffect(() => {
+    console.log(
+      "token",
+      TOKEN,
+      API_URL,
+      process.env.BEARER_TOKEN,
+      process.env.REACT_APP_SERVER_URL
+    );
     async function getData() {
       try {
         let userResponse = await axios.get(`${API_URL}/user`, {
@@ -41,7 +49,7 @@ const App: FC = () => {
 
         // const headers = {
         //   Accept: "application/json",
-        //   Authorization: "Bearer H_ndUBdI-Aqznfi-SVH0",
+        //   Authorization: "Bearer",
         // };
         // const fetchData = async () => {
         //   const rawQuotes = await fetch("https://the-one-api.dev/v2/quote", {
