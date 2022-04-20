@@ -2,7 +2,7 @@ import { useState } from "react";
 import { FuncProps } from "../Interfaces";
 
 function SignUp({ onSignUp = () => {} }: FuncProps) {
-  const [user, setUser] = useState({ username: "", password: "" });
+  const [user, setUser] = useState({ username: "", email: "", password: "" });
 
   function handleChange(e: any) {
     let value = e.target.value;
@@ -29,7 +29,15 @@ function SignUp({ onSignUp = () => {} }: FuncProps) {
           placeholder="Enter your username"
           onChange={handleChange}
         />
-
+        <label htmlFor="email" style={{ color: "black" }}>
+          Email:
+        </label>
+        <input
+          type="email"
+          name="email"
+          placeholder="Enter your Email"
+          onChange={handleChange}
+        />
         <label htmlFor="password" style={{ color: "black" }}>
           Password:
         </label>

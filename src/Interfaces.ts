@@ -7,6 +7,7 @@ export interface IBook {
 export interface User {
   _id: number;
   username: string;
+  email: string;
   imageUrl: string;
 }
 
@@ -17,5 +18,9 @@ export interface IProps {
 
 export interface FuncProps {
   //here you can declare the return type (here is void)
-  onSignUp: (props: { username: string; password: string }) => void;
+  onSignUp: (props: {
+    username: string;
+    password: string;
+    email: string;
+  }) => void;
 }

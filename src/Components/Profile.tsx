@@ -43,8 +43,15 @@ function Profile({ currentUser, setUser }: IProps) {
         ) : (
           <p>Loading</p>
         )}
+        <label style={{ color: "black" }}>Add a Book to your Profile:</label>
         <Link to="/add-book">
           <Button variant="outline-secondary">Add Book</Button>{" "}
+        </Link>
+        <label style={{ color: "black" }}>
+          Update your Profile information:
+        </label>
+        <Link to="/update-user">
+          <Button variant="outline-secondary">Update Profile</Button>{" "}
         </Link>
       </div>
     </div>

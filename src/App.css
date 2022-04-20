@@ -154,6 +154,34 @@ h3 {
   flex-direction: column;
 }
 
+.updateUser-page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.updateUser-page h2 {
+  color: rgb(28, 0, 155);
+  font-size: 4rem;
+  font-family: Georgia, "Times New Roman", Times, serif;
+}
+.form-container {
+  width: 50vw;
+  background-color: rgb(243, 243, 243);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 0 40px rgb(192, 192, 192);
+  margin-top: 40px;
+}
+.form-container input {
+  width: 80%;
+  margin-bottom: 20px;
+}
+
 label {
   color: white;
   font-size: 2rem;

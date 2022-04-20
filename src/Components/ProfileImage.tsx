@@ -25,11 +25,13 @@ function ProfileImage({ setUser }: IProps) {
         console.log("saved", updatedUser.data);
         let _id = updatedUser.data._id;
         let username = updatedUser.data.username;
+        let email = updatedUser.data.email;
         let imageUrl = updatedUser.data.imageUrl;
 
         await setUser({
           _id,
           username,
+          email,
           imageUrl,
         });
 

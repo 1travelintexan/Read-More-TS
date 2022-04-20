@@ -14,12 +14,14 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { User, IBook } from "./Interfaces";
 import "bootstrap/dist/css/bootstrap.min.css";
+import UpdateUser from "./Components/UpdateUser";
 
 const App: FC = () => {
   const navigate = useNavigate();
   const [user, setUser] = useState<User>({
     username: "",
     _id: 0,
+    email: "",
     imageUrl: "",
   });
   const [books, setBooks] = useState<IBook[]>();
@@ -36,6 +38,7 @@ const App: FC = () => {
           let userDB = {
             _id: userResponse.data._id,
             username: userResponse.data.username,
+            email: userResponse.data.email,
             imageUrl: userResponse.data.imageUrl,
           };
           console.log("component did mount", userDB);
@@ -79,7 +82,11 @@ const App: FC = () => {
     getData();
   }, []);
 
-  function handleSignUp(user: { username: string; password: string }) {
+  function handleSignUp(user: {
+    username: string;
+    password: string;
+    email: string;
+  }) {
     axios
       .post(`${API_URL}/signup`, user, {
         withCredentials: true,
@@ -130,6 +137,10 @@ const App: FC = () => {
         />
         <Route path="/add-book" element={<AddBook />} />
         <Route path="/book-list" element={<BookList />} />
+        <Route
+          path="/update-user"
+          element={<UpdateUser currentUser={user} />}
+        />
       </Routes>
     </div>
   );
