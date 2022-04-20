@@ -8,6 +8,12 @@ body {
 #link {
   text-decoration: none;
 }
+.flex {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
 
 .landing-page {
   background-color: rgb(255, 255, 255);
@@ -67,7 +73,7 @@ body {
 .banner {
   width: 100vw;
   padding: 0;
-  margin: 0;
+  margin: 10px;
   display: flex;
   align-items: center;
   justify-content: flex-end;
@@ -166,7 +172,7 @@ h3 {
   font-family: Georgia, "Times New Roman", Times, serif;
 }
 .form-container {
-  width: 50vw;
+  width: 70vw;
   background-color: rgb(243, 243, 243);
   display: flex;
   align-items: center;
@@ -178,13 +184,29 @@ h3 {
   margin-top: 40px;
 }
 .form-container input {
-  width: 80%;
+  width: 40%;
   margin-bottom: 20px;
 }
 
 label {
   color: white;
   font-size: 2rem;
+}
+
+.update-label {
+  color: black;
+  font-weight: bold;
+}
+
+.update-input {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.update-input input {
+  /* //height: 100%; */
+  margin-top: 20px;
 }
 
 .header input {

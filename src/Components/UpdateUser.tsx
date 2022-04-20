@@ -3,6 +3,7 @@ import Button from "react-bootstrap/Button";
 import { useState } from "react";
 import { API_URL } from "../config";
 import { User } from "../Interfaces";
+import { CloseButton } from "react-bootstrap";
 
 interface IProps {
   currentUser: User;
@@ -24,6 +25,7 @@ function UpdateUser({ currentUser }: IProps) {
     setUpdatedUser({ ...updatedUser, [e.target.name]: value });
   };
   const handleUpdateUser = async (e: any) => {
+    console.log("updated user", updatedUser);
     let updatedUserDB = axios.post(`${API_URL}/update`, updatedUser, {
       withCredentials: true,
     });
@@ -32,26 +34,34 @@ function UpdateUser({ currentUser }: IProps) {
 
   const handleShowForm = (e: any) => {
     let name = e.target.name;
-    console.log("clicked", name);
     setShowInput({ ...showInput, [name]: true });
+  };
+
+  const handleCloseInput = (e: any) => {
+    let name = e.target.name;
+    setShowInput({ ...showInput, [name]: false });
   };
   return (
     <div className="updateUser-page">
       <h2>Update your Information:</h2>
       <form onSubmit={handleUpdateUser} className="form-container">
-        <label style={{ color: "black" }}>User Name:</label>
+        <label className="update-label">User Name:</label>
         {showInput.usernameBtn ? (
-          <input
-            name="username"
-            type="text"
-            placeholder="Enter your new username"
-            onChange={handleChange}
-          />
+          <div className="update-input">
+            <input
+              name="username"
+              type="text"
+              placeholder="Enter your new username"
+              onChange={handleChange}
+            />
+            <CloseButton name="usernameBtn" onClick={handleCloseInput} />
+          </div>
         ) : (
           <div>
-            <p>{currentUser.username}</p>
+            <h4>{currentUser.username}</h4>
             <Button
               variant="outline-secondary"
+              size="sm"
               name="usernameBtn"
               onClick={handleShowForm}
             >
@@ -59,19 +69,23 @@ function UpdateUser({ currentUser }: IProps) {
             </Button>
           </div>
         )}
-        <label style={{ color: "black" }}>Email:</label>
+        <label className="update-label">Email:</label>
         {showInput.emailBtn ? (
-          <input
-            name="email"
-            type="email"
-            placeholder="Enter your email"
-            onChange={handleChange}
-          />
+          <div className="update-input">
+            <input
+              name="email"
+              type="email"
+              placeholder="Enter your email"
+              onChange={handleChange}
+            />
+            <CloseButton name="emailBtn" onClick={handleCloseInput} />
+          </div>
         ) : (
-          <div>
-            <p>{currentUser.email}</p>
+          <div className="flex">
+            <h4>{currentUser.email}</h4>
             <Button
               variant="outline-secondary"
+              size="sm"
               name="emailBtn"
               onClick={handleShowForm}
             >
@@ -79,18 +93,22 @@ function UpdateUser({ currentUser }: IProps) {
             </Button>
           </div>
         )}
-        <label style={{ color: "black" }}>Password:</label>
+        <label className="update-label">Password:</label>
         {showInput.passwordBtn ? (
-          <input
-            name="password"
-            type="password"
-            placeholder="Enter your new password"
-            onChange={handleChange}
-          />
+          <div className="update-input">
+            <input
+              name="password"
+              type="password"
+              placeholder="Enter your new password"
+              onChange={handleChange}
+            />
+            <CloseButton name="passwordBtn" onClick={handleCloseInput} />
+          </div>
         ) : (
           <div>
             <Button
               variant="outline-secondary"
+              size="sm"
               name="passwordBtn"
               onClick={handleShowForm}
             >
@@ -98,7 +116,14 @@ function UpdateUser({ currentUser }: IProps) {
             </Button>
           </div>
         )}
-        <button>Submit</button>
+        <Button
+          variant="success"
+          size="lg"
+          style={{ marginTop: "30px" }}
+          type="submit"
+        >
+          Submit
+        </Button>
       </form>
     </div>
   );
