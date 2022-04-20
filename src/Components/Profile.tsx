@@ -3,6 +3,7 @@ import BookList from "../Components/BookList";
 import { useNavigate, Link } from "react-router-dom";
 import { User } from "../Interfaces";
 import { Dispatch, SetStateAction } from "react";
+import { Spinner } from "react-bootstrap";
 
 interface IProps {
   //here you can declare the return type (here is void)
@@ -12,7 +13,9 @@ interface IProps {
 
 function Profile({ currentUser, setUser }: IProps) {
   const navigate = useNavigate();
-
+  if (!currentUser) {
+    return <Spinner animation="grow" variant="primary" />;
+  }
   return (
     <div>
       <div className="profile-container">

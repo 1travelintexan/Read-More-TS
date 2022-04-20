@@ -3,7 +3,7 @@ import Button from "react-bootstrap/Button";
 import { useState } from "react";
 import { API_URL } from "../config";
 import { User } from "../Interfaces";
-import { CloseButton } from "react-bootstrap";
+import { CloseButton, Spinner } from "react-bootstrap";
 
 interface IProps {
   currentUser: User;
@@ -41,6 +41,9 @@ function UpdateUser({ currentUser }: IProps) {
     let name = e.target.name;
     setShowInput({ ...showInput, [name]: false });
   };
+  if (!currentUser) {
+    return <Spinner animation="grow" variant="primary" />;
+  }
   return (
     <div className="updateUser-page">
       <h2>Update your Information:</h2>
@@ -53,11 +56,12 @@ function UpdateUser({ currentUser }: IProps) {
               type="text"
               placeholder="Enter your new username"
               onChange={handleChange}
+              value={updatedUser.username}
             />
             <CloseButton name="usernameBtn" onClick={handleCloseInput} />
           </div>
         ) : (
-          <div>
+          <div className="flex">
             <h4>{currentUser.username}</h4>
             <Button
               variant="outline-secondary"
@@ -76,6 +80,7 @@ function UpdateUser({ currentUser }: IProps) {
               name="email"
               type="email"
               placeholder="Enter your email"
+              value={updatedUser.email}
               onChange={handleChange}
             />
             <CloseButton name="emailBtn" onClick={handleCloseInput} />

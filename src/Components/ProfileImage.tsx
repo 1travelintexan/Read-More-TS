@@ -3,6 +3,7 @@ import axios from "axios";
 import { API_URL } from "../config";
 import { User } from "../Interfaces";
 import { useNavigate } from "react-router-dom";
+import { Spinner } from "react-bootstrap";
 
 interface IProps {
   setUser: Dispatch<SetStateAction<User>>;
@@ -41,6 +42,9 @@ function ProfileImage({ setUser }: IProps) {
       }
     }
     sendImage();
+  }
+  if (!setUser) {
+    return <Spinner animation="grow" variant="primary" />;
   }
 
   return (

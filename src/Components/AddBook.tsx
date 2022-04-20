@@ -2,6 +2,7 @@ import axios from "axios";
 import { useState, ChangeEvent } from "react";
 import { IBook } from "../Interfaces";
 import { API_URL } from "../config";
+import { Button } from "react-bootstrap";
 
 function AddBook() {
   const [book, setBook] = useState<string>("");
@@ -47,41 +48,41 @@ function AddBook() {
 
   return (
     <div className="add-book-container">
-      <h1>* Add a book here *</h1>
-      <div className="header">
-        <div className="input-container">
-          <label>Book Title:</label>
-          <input
-            type="text"
-            name="book"
-            placeholder="Title"
-            value={book}
-            onChange={handleChange}
-          />
-          <label>Book Author:</label>
-          <input
-            type="text"
-            name="author"
-            placeholder="Author"
-            value={author}
-            onChange={handleChange}
-          />
-          <label>Pages:</label>
-          <input
-            type="number"
-            name="pages"
-            value={pages}
-            onChange={handleChange}
-          />
-          <label>Image:</label>
-          <input
-            type="text"
-            name="image"
-            value={image}
-            onChange={handleChange}
-          />
-        </div>
-        <button onClick={addBook}>Add Book</button>
+      <h1>* Add book here *</h1>
+      <div className="add-book-form">
+        <label className="update-label">Book Title:</label>
+        <input
+          type="text"
+          name="book"
+          placeholder="Title"
+          value={book}
+          onChange={handleChange}
+        />
+        <label className="update-label">Book Author:</label>
+        <input
+          type="text"
+          name="author"
+          placeholder="Author"
+          value={author}
+          onChange={handleChange}
+        />
+        <label className="update-label">Pages:</label>
+        <input
+          type="number"
+          name="pages"
+          value={pages}
+          onChange={handleChange}
+        />
+        <label className="update-label">Image:</label>
+        <input type="text" name="image" value={image} onChange={handleChange} />
+        <Button
+          variant="success"
+          size="lg"
+          style={{ marginTop: "10px" }}
+          onClick={addBook}
+        >
+          Submit
+        </Button>
       </div>
     </div>
   );

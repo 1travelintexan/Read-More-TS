@@ -119,7 +119,6 @@ const App: FC = () => {
         navigate("/login");
       });
   }
-
   return (
     <div className="app">
       <Navbar currentUser={user} />
