@@ -43,17 +43,31 @@ function Navbar({ currentUser }: IProps) {
       <div className="banner">
         <div>
           <Link to="/profile">
-            <Button variant="outline-secondary">Profile Page</Button>{" "}
+            <Button variant="outline-secondary">Profile Page</Button>
+          </Link>
+          <Link to="/add-book">
+            <Button variant="outline-secondary">Add Book</Button>
+          </Link>
+          <Link to="/update-user">
+            <Button variant="outline-secondary">Update Profile</Button>
           </Link>
         </div>
+
         <div>
           <Link to="/profile-image">
-            <Button variant="outline-secondary">Image</Button>{" "}
+            <Button variant="outline-secondary">Profile Image</Button>
           </Link>
           <Button variant="danger" id="logout" onClick={handleLogout}>
             Logout
           </Button>
         </div>
+      </div>
+      <div>
+        {currentUser ? (
+          <h1 className="welcome">Welcome {currentUser.username}!</h1>
+        ) : (
+          <p>Loading...</p>
+        )}
       </div>
     </>
   );

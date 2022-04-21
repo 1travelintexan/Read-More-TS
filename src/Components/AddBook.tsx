@@ -3,8 +3,10 @@ import { useState, ChangeEvent } from "react";
 import { IBook } from "../Interfaces";
 import { API_URL } from "../config";
 import { Button } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 
 function AddBook() {
+  const navigate = useNavigate();
   const [book, setBook] = useState<string>("");
   const [author, setAuthor] = useState<string>("");
   const [pages, setPages] = useState<number>(0);
@@ -28,15 +30,20 @@ function AddBook() {
       pages: pages,
       image: image,
     };
-    let response = await axios.post(`${API_URL}/api/addbook`, newBook, {
-      withCredentials: true,
-    });
-    console.log("here is the data", response.data);
-    setBook("");
-    setPages(0);
-    setAuthor("");
-    setImage("");
-    setBookList([...bookList, newBook]);
+    try {
+      let response = await axios.post(`${API_URL}/addbook`, newBook, {
+        withCredentials: true,
+      });
+      console.log("here is the data", response.data);
+      setBook("");
+      setPages(0);
+      setAuthor("");
+      setImage("");
+      setBookList([...bookList, newBook]);
+      navigate("/profile");
+    } catch (err) {
+      console.log("There was an error adding a book", err);
+    }
   };
 
   //   const bookRead = (bookRead: string): void => {
@@ -48,7 +55,7 @@ function AddBook() {
 
   return (
     <div className="add-book-container">
-      <h1>* Add book here *</h1>
+      <h1>* Add a book here *</h1>
       <div className="add-book-form">
         <label className="update-label">Book Title:</label>
         <input

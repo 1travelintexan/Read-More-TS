@@ -45,9 +45,9 @@ function UpdateUser({ currentUser }: IProps) {
     return <Spinner animation="grow" variant="primary" />;
   }
   return (
-    <div className="updateUser-page">
-      <h2>Update your Information:</h2>
-      <form onSubmit={handleUpdateUser} className="form-container">
+    <div className="add-book-container">
+      <h1>* Update your Information *</h1>
+      <form onSubmit={handleUpdateUser} className="update-form">
         <label className="update-label">User Name:</label>
         {showInput.usernameBtn ? (
           <div className="update-input">
@@ -62,7 +62,7 @@ function UpdateUser({ currentUser }: IProps) {
           </div>
         ) : (
           <div className="flex">
-            <h4>{currentUser.username}</h4>
+            <h4 className="update-info">{currentUser.username}</h4>
             <Button
               variant="outline-secondary"
               size="sm"
@@ -87,7 +87,7 @@ function UpdateUser({ currentUser }: IProps) {
           </div>
         ) : (
           <div className="flex">
-            <h4>{currentUser.email}</h4>
+            <h4 className="update-info">{currentUser.email}</h4>
             <Button
               variant="outline-secondary"
               size="sm"

@@ -8,7 +8,7 @@ function BookList() {
     _id: number;
     bookName: string;
     bookAuthor: string;
-    page: number;
+    pages: number;
   };
   const [allBooks, setAllBooks] = useState<Book[] | null>(null);
   useEffect(() => {
@@ -23,7 +23,7 @@ function BookList() {
       };
       getBooks();
     } catch (err) {
-      console.log(err, "error");
+      console.log(err, "error getting books");
     }
   }, []);
 
@@ -33,8 +33,17 @@ function BookList() {
       <div className="list">
         <div className="bookListContainer">
           {allBooks ? (
-            allBooks.map((elem, i: number) => {
-              return <p key={i}>{elem.bookName}</p>;
+            allBooks.map((elem: Book, i: number) => {
+              return (
+                <>
+                  <div className="book">
+                    <span id="bookTitle">{elem.bookName}</span>
+                    <span>By: {elem.bookAuthor}</span>
+                    <span>{elem.pages} pages</span>
+                  </div>
+                  <button>X</button>
+                </>
+              );
             })
           ) : (
             <p>Loading...</p>
