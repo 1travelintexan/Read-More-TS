@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { FuncProps } from "../Interfaces";
+import { Link } from "react-router-dom";
 
 function SignUp({ onSignUp = () => {} }: FuncProps) {
   const [user, setUser] = useState({ username: "", email: "", password: "" });
@@ -17,9 +18,9 @@ function SignUp({ onSignUp = () => {} }: FuncProps) {
   }
   return (
     <div className="landing-page">
-      <h1>Sign Up!</h1>
+      <h1>Sign Up</h1>
       <form onSubmit={handleSubmit} className="form">
-        <label htmlFor="username" style={{ color: "black" }}>
+        <label htmlFor="username" className="login-label">
           Username:
         </label>
         <input
@@ -29,7 +30,7 @@ function SignUp({ onSignUp = () => {} }: FuncProps) {
           placeholder="Enter your username"
           onChange={handleChange}
         />
-        <label htmlFor="email" style={{ color: "black" }}>
+        <label htmlFor="email" className="login-label">
           Email:
         </label>
         <input
@@ -38,7 +39,7 @@ function SignUp({ onSignUp = () => {} }: FuncProps) {
           placeholder="Enter your Email"
           onChange={handleChange}
         />
-        <label htmlFor="password" style={{ color: "black" }}>
+        <label htmlFor="password" className="login-label">
           Password:
         </label>
         <input
@@ -47,8 +48,14 @@ function SignUp({ onSignUp = () => {} }: FuncProps) {
           placeholder="Enter your password"
           onChange={handleChange}
         />
-        <button>Sign Up!</button>
+        <button>Sign Up</button>
       </form>
+      <h6>
+        Returning guest?
+        <Link to={"/"} id="link">
+          Login
+        </Link>
+      </h6>
     </div>
   );
 }

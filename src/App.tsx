@@ -3,10 +3,8 @@ import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import AddBook from "./Components/AddBook";
 import BookList from "./Components/BookList";
-import Navbar from "./Components/Navbar";
 import Profile from "./Components/Profile";
 import SignUp from "./Components/Signup";
-import Home from "./Components/Home";
 import Login from "./Components/Login";
 import ProfileImage from "./Components/ProfileImage";
 import { API_URL, TOKEN } from "./config";
@@ -15,6 +13,7 @@ import { useNavigate } from "react-router-dom";
 import { User, IBook } from "./Interfaces";
 import "bootstrap/dist/css/bootstrap.min.css";
 import UpdateUser from "./Components/UpdateUser";
+import OutletComponent from "./Components/OutletComponent";
 
 const App: FC = () => {
   const navigate = useNavigate();
@@ -121,25 +120,25 @@ const App: FC = () => {
   }
   return (
     <div className="app">
-      <Navbar currentUser={user} />
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Login onLogin={handleLogin} />} />
         <Route path="/signup" element={<SignUp onSignUp={handleSignUp} />} />
-        <Route path="/login" element={<Login onLogin={handleLogin} />} />
-        <Route
-          path="/profile"
-          element={<Profile currentUser={user} setUser={setUser} />}
-        />
-        <Route
-          path="/profile-image"
-          element={<ProfileImage setUser={setUser} />}
-        />
-        <Route path="/add-book" element={<AddBook />} />
-        <Route path="/book-list" element={<BookList />} />
-        <Route
-          path="/update-user"
-          element={<UpdateUser currentUser={user} />}
-        />
+        <Route element={<OutletComponent />}>
+          <Route
+            path="/profile"
+            element={<Profile currentUser={user} setUser={setUser} />}
+          />
+          <Route
+            path="/profile-image"
+            element={<ProfileImage setUser={setUser} />}
+          />
+          <Route path="/add-book" element={<AddBook />} />
+          <Route path="/book-list" element={<BookList />} />
+          <Route
+            path="/update-user"
+            element={<UpdateUser currentUser={user} />}
+          />
+        </Route>
       </Routes>
     </div>
   );

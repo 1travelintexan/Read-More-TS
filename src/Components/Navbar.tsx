@@ -1,15 +1,16 @@
-import bookImage from "../images/booksLogo.png";
 import { User } from "../Interfaces";
 import Button from "react-bootstrap/Button";
 import axios from "axios";
 import { API_URL } from "../config";
 import { useNavigate, Link } from "react-router-dom";
+import bookLogo from "../images/booksLogo.png";
 interface IProps {
   currentUser: User;
 }
 
-function Navbar({ currentUser }: IProps) {
+function Navbar() {
   const navigate = useNavigate();
+  const currentUser = { imageUrl: "", username: "" };
 
   async function handleLogout() {
     let response = await axios.post(
@@ -26,10 +27,7 @@ function Navbar({ currentUser }: IProps) {
   return (
     <>
       <div className="navbar">
-        <img className="logo" src={bookImage} alt="books logo" />
-        <div>
-          <h1>Read a book and chill</h1>
-        </div>
+        <h4 id="logo">Kindleflix</h4>
         <div>
           {currentUser.imageUrl ? (
             <img
@@ -37,37 +35,32 @@ function Navbar({ currentUser }: IProps) {
               alt="profile pic"
               className="profile-image"
             />
-          ) : null}
+          ) : (
+            <img src={bookLogo} alt="profile pic" className="profile-image" />
+          )}
         </div>
       </div>
       <div className="banner">
         <div>
           <Link to="/profile">
-            <Button variant="outline-secondary">Profile Page</Button>
+            <Button variant="outline-light">Profile Page</Button>
           </Link>
           <Link to="/add-book">
-            <Button variant="outline-secondary">Add Book</Button>
+            <Button variant="outline-light">Add Book</Button>
           </Link>
           <Link to="/update-user">
-            <Button variant="outline-secondary">Update Profile</Button>
+            <Button variant="outline-light">Update Profile</Button>
           </Link>
         </div>
 
         <div>
           <Link to="/profile-image">
-            <Button variant="outline-secondary">Profile Image</Button>
+            <Button variant="outline-light">Profile Image</Button>
           </Link>
           <Button variant="danger" id="logout" onClick={handleLogout}>
             Logout
           </Button>
         </div>
-      </div>
-      <div>
-        {currentUser ? (
-          <h1 className="welcome">Welcome {currentUser.username}!</h1>
-        ) : (
-          <p>Loading...</p>
-        )}
       </div>
     </>
   );

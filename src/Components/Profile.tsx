@@ -12,7 +12,6 @@ interface IProps {
 }
 
 function Profile({ currentUser, setUser }: IProps) {
-  const navigate = useNavigate();
   if (!currentUser) {
     return <Spinner animation="grow" variant="primary" />;
   }
