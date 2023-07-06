@@ -35,7 +35,6 @@ body {
   color: rgb(254, 254, 254);
   font-size: 2rem;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
-  margin-top: 30px;
 }
 .landing-page h6 {
   color: rgb(175, 174, 174);
@@ -56,6 +55,7 @@ body {
   border: none;
   margin-bottom: 20px;
   background-color: #4c4c4cab;
+  color: whitesmoke;
 }
 .signup-btn {
   background-color: red;
@@ -178,6 +178,7 @@ body {
   align-items: center;
   justify-content: space-between;
   margin-bottom: 30px;
+  height: 4rem;
 }
 #show-update-input {
   color: red;
@@ -276,37 +277,4 @@ body {
 .header button:hover {
   border: 3px solid white;
   box-shadow: 4px 4px 8px rgb(49, 49, 230);
-}
-
-.add-book-container {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-}
-.add-book-container h1 {
-  color: rgb(0, 17, 208);
-  text-shadow: 10px 20px 30px black;
-  font-size: 4rem;
-  font-family: fantasy;
-  font-weight: bold;
-}
-.add-book-form {
-  width: 60%;
-  padding: 20px;
-  margin-bottom: 20px;
-  border-radius: 20px;
-  background-color: #e7e6e682;
-  box-shadow: 0 0 50px grey;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-}
-.add-book-form input {
-  width: 70%;
-  font-size: 1.5rem;
-  margin-bottom: 20px;
-  background-color: #b0ffc9;
 }

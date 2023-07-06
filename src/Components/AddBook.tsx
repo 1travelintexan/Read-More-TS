@@ -54,10 +54,10 @@ function AddBook() {
   //   };
 
   return (
-    <div className="add-book-container">
-      <h1>* Add a book here *</h1>
-      <div className="add-book-form">
-        <label className="update-label">Book Title:</label>
+    <div className="landing-page">
+      <h1>Add a book here</h1>
+      <div className="form">
+        <label className="login-label">Book Title:</label>
         <input
           type="text"
           name="book"
@@ -65,7 +65,7 @@ function AddBook() {
           value={book}
           onChange={handleChange}
         />
-        <label className="update-label">Book Author:</label>
+        <label className="login-label">Book Author:</label>
         <input
           type="text"
           name="author"
@@ -73,23 +73,18 @@ function AddBook() {
           value={author}
           onChange={handleChange}
         />
-        <label className="update-label">Pages:</label>
+        <label className="login-label">Pages:</label>
         <input
           type="number"
           name="pages"
           value={pages}
           onChange={handleChange}
         />
-        <label className="update-label">Image:</label>
+        <label className="login-label">Image:</label>
         <input type="text" name="image" value={image} onChange={handleChange} />
-        <Button
-          variant="success"
-          size="lg"
-          style={{ marginTop: "10px" }}
-          onClick={addBook}
-        >
-          Submit
-        </Button>
+        <button className="signup-btn" onClick={addBook}>
+          Add Book
+        </button>
       </div>
     </div>
   );

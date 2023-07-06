@@ -50,7 +50,7 @@ function UpdateUser({ currentUser }: IProps) {
       <form onSubmit={handleUpdateUser} className="form">
         <label className="login-label">User Name:</label>
         {showInput.usernameBtn ? (
-          <div className="update-input">
+          <div className="update-info-row">
             <input
               name="username"
               type="text"
@@ -78,7 +78,7 @@ function UpdateUser({ currentUser }: IProps) {
         )}
         <label className="login-label">Email:</label>
         {showInput.emailBtn ? (
-          <div className="update-input">
+          <div className="update-info-row">
             <input
               name="email"
               type="email"
