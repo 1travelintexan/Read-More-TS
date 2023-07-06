@@ -13,6 +13,7 @@ body {
   text-decoration: none;
   margin-left: 20px;
 }
+
 .flex {
   display: flex;
   align-items: center;
@@ -41,7 +42,7 @@ body {
   margin-bottom: 30px;
 }
 .login-label {
-  font-size: 1rem;
+  color: aliceblue;
 }
 .form {
   display: flex;
@@ -53,9 +54,10 @@ body {
   height: 3rem;
   border-radius: 0.2rem;
   border: none;
+  margin-bottom: 20px;
+  background-color: #4c4c4cab;
 }
-.form button {
-  margin-top: 20px;
+.signup-btn {
   background-color: red;
   color: white;
   font-size: 1.2rem;
@@ -63,11 +65,15 @@ body {
   border-radius: 0.2rem;
   border: none;
 }
-.form button:hover {
+.signup-btn:hover {
   background-color: rgb(181, 2, 2);
 }
 .outlet-page {
   min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: column;
 }
 .banner {
   width: 100vw;
@@ -76,10 +82,7 @@ body {
   margin-bottom: 30px;
   display: flex;
   align-items: center;
-  justify-content: space-around;
-}
-.banner button {
-  margin-right: 10px;
+  justify-content: space-between;
 }
 
 #logout {
@@ -96,7 +99,7 @@ body {
   width: 100%;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-around;
   height: 200px;
   background-color: rgb(1, 4, 20);
   padding: 20px;
@@ -115,15 +118,24 @@ body {
 .logo {
   height: 125px;
   width: 125px;
-  background-color: rgba(233, 167, 0, 0.503);
   border-radius: 62.5px;
 }
 
 .profile-container {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   flex-direction: column;
+  background-color: rgba(30, 30, 30, 0.817);
+  width: 80%;
+  min-height: 50vh;
+}
+
+.profile-greetings {
+  color: whitesmoke;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 3rem;
+  letter-spacing: 0.3rem;
 }
 
 .profile-image {
@@ -132,11 +144,9 @@ body {
   border-radius: 62.5px;
 }
 
-h3 {
-  font-size: 4rem;
-  color: rgb(28, 0, 155);
-  padding: 0;
-  margin: 0px;
+.booklist h3 {
+  font-size: 1.6rem;
+  color: rgb(166, 166, 166);
 }
 
 .updateUser-page {
@@ -159,33 +169,37 @@ h3 {
 }
 
 .update-info {
-  color: rgb(63, 63, 63);
-  font-size: 1.3rem;
+  color: rgb(243, 241, 241);
+  font-size: 1.5rem;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
-
-label {
-  color: white;
-  font-size: 2rem;
+.update-info-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 30px;
 }
-
-.update-label {
-  color: black;
-  font-weight: bold;
+#show-update-input {
+  color: red;
+  background-color: #302f2f00;
+  border: none;
 }
-
+#show-update-input:hover {
+  color: rgb(173, 1, 1);
+}
 .update-input {
   width: 100%;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
 }
-
 .update-input input {
-  background-color: #b0ffc9;
-  width: 70%;
-  font-size: 1.5rem;
-  margin-bottom: 20px;
+  width: 80%;
+}
+.update-info-row input {
+  width: 80%;
+  font-size: 1.2rem;
+  margin-top: 5px;
 }
 
 .bookList {
@@ -208,7 +222,7 @@ label {
   color: rgb(255, 254, 254);
   margin: 5px;
   padding: 10px;
-  background-image: url("../public/blueBook.png");
+  background-image: url("./images/blueBook.png");
   background-size: cover;
   background-repeat: no-repeat;
   box-shadow: 4px 4px 8px black;

@@ -12,11 +12,16 @@ interface IProps {
 }
 
 function Profile({ currentUser, setUser }: IProps) {
+  console.log("current user profile", currentUser);
   if (!currentUser) {
     return <Spinner animation="grow" variant="primary" />;
   }
+
   return (
     <div className="profile-container">
+      <h1 className="profile-greetings">
+        Welcome {currentUser ? currentUser.username : null}
+      </h1>
       <div>
         <BookList />
       </div>

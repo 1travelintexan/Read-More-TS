@@ -41,11 +41,12 @@ function Login({ onLogin = () => {} }: FuncProps) {
           name="password"
           placeholder="******"
           onChange={handleChange}
+          autoComplete="on"
         />
-        <button>Login</button>
+        <button className="signup-btn">Login</button>
       </form>
       <h6>
-        New to Kindlix?
+        New to Kindleflix?
         <Link to={"/signup"} id="link">
           Signup
         </Link>

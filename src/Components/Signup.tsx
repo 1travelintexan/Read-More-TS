@@ -45,10 +45,11 @@ function SignUp({ onSignUp = () => {} }: FuncProps) {
         <input
           type="password"
           name="password"
-          placeholder="Enter your password"
+          placeholder="*******"
           onChange={handleChange}
+          autoComplete="on"
         />
-        <button>Sign Up</button>
+        <button className="signup-btn">Sign Up</button>
       </form>
       <h6>
         Returning guest?

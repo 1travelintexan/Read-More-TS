@@ -1,13 +1,11 @@
 import Navbar from "./Navbar";
-import { User } from "../Interfaces";
-interface IProps {
-  currentUser: User;
-}
+import { Outlet } from "react-router-dom";
 function OutletComponent({ children }: any) {
   return (
     <div className="outlet-page">
       <Navbar />
       {children}
+      <Outlet />
     </div>
   );
 }

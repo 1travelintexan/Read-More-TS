@@ -3,7 +3,8 @@ import Button from "react-bootstrap/Button";
 import { useState } from "react";
 import { API_URL } from "../config";
 import { User } from "../Interfaces";
-import { CloseButton, Spinner } from "react-bootstrap";
+import { Spinner } from "react-bootstrap";
+import CloseButton from "react-bootstrap/CloseButton";
 
 interface IProps {
   currentUser: User;
@@ -17,7 +18,6 @@ function UpdateUser({ currentUser }: IProps) {
   const [showInput, setShowInput] = useState({
     usernameBtn: false,
     emailBtn: false,
-    passwordBtn: false,
   });
 
   const handleChange = (e: any) => {
@@ -45,90 +45,76 @@ function UpdateUser({ currentUser }: IProps) {
     return <Spinner animation="grow" variant="primary" />;
   }
   return (
-    <div className="add-book-container">
-      <h1>* Update your Information *</h1>
-      <form onSubmit={handleUpdateUser} className="update-form">
-        <label className="update-label">User Name:</label>
+    <div className="landing-page">
+      <h1> Update </h1>
+      <form onSubmit={handleUpdateUser} className="form">
+        <label className="login-label">User Name:</label>
         {showInput.usernameBtn ? (
           <div className="update-input">
             <input
               name="username"
               type="text"
-              placeholder="Enter your new username"
+              placeholder="New username"
               onChange={handleChange}
               value={updatedUser.username}
             />
-            <CloseButton name="usernameBtn" onClick={handleCloseInput} />
+            <CloseButton
+              style={{ backgroundColor: "red" }}
+              name="usernameBtn"
+              onClick={handleCloseInput}
+            />
           </div>
         ) : (
-          <div className="flex">
+          <div className="update-info-row">
             <h4 className="update-info">{currentUser.username}</h4>
-            <Button
-              variant="outline-secondary"
-              size="sm"
-              name="usernameBtn"
+            <button
+              id="show-update-input"
               onClick={handleShowForm}
+              name="usernameBtn"
             >
               Update
-            </Button>
+            </button>
           </div>
         )}
-        <label className="update-label">Email:</label>
+        <label className="login-label">Email:</label>
         {showInput.emailBtn ? (
           <div className="update-input">
             <input
               name="email"
               type="email"
               placeholder="Enter your email"
-              value={updatedUser.email}
               onChange={handleChange}
             />
-            <CloseButton name="emailBtn" onClick={handleCloseInput} />
-          </div>
-        ) : (
-          <div className="flex">
-            <h4 className="update-info">{currentUser.email}</h4>
-            <Button
-              variant="outline-secondary"
-              size="sm"
+            <CloseButton
+              style={{ backgroundColor: "red" }}
               name="emailBtn"
-              onClick={handleShowForm}
-            >
-              Update
-            </Button>
-          </div>
-        )}
-        <label className="update-label">Password:</label>
-        {showInput.passwordBtn ? (
-          <div className="update-input">
-            <input
-              name="password"
-              type="password"
-              placeholder="Enter your new password"
-              onChange={handleChange}
+              onClick={handleCloseInput}
             />
-            <CloseButton name="passwordBtn" onClick={handleCloseInput} />
           </div>
         ) : (
-          <div>
-            <Button
-              variant="outline-secondary"
-              size="sm"
-              name="passwordBtn"
+          <div className="update-info-row">
+            <h4 className="update-info">{currentUser.email}</h4>
+            <button
+              id="show-update-input"
               onClick={handleShowForm}
+              name="emailBtn"
             >
               Update
-            </Button>
+            </button>
           </div>
         )}
-        <Button
-          variant="success"
-          size="lg"
-          style={{ marginTop: "30px" }}
-          type="submit"
-        >
+        <label className="login-label">Password:</label>
+        <div className="update-info-row">
+          <input
+            name="password"
+            type="password"
+            placeholder="New Password"
+            onChange={handleChange}
+          />
+        </div>
+        <button className="signup-btn" type="submit">
           Submit
-        </Button>
+        </button>
       </form>
     </div>
   );

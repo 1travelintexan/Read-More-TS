@@ -119,7 +119,7 @@ const App: FC = () => {
       });
   }
   return (
-    <div className="app">
+    <>
       <Routes>
         <Route path="/" element={<Login onLogin={handleLogin} />} />
         <Route path="/signup" element={<SignUp onSignUp={handleSignUp} />} />
@@ -140,7 +140,7 @@ const App: FC = () => {
           />
         </Route>
       </Routes>
-    </div>
+    </>
   );
 };
 
