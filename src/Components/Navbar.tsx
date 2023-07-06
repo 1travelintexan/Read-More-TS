@@ -23,15 +23,19 @@ function Navbar() {
   }, []);
 
   async function handleLogout() {
-    let response = await axios.post(
-      `${API_URL}/logout`,
-      {},
-      {
-        withCredentials: true,
-      }
-    );
-    navigate("/");
-    console.log("Logout response", response);
+    try {
+      let response = await axios.post(
+        `${API_URL}/logout`,
+        {},
+        {
+          withCredentials: true,
+        }
+      );
+      navigate("/");
+      console.log("Logout response", response);
+    } catch (err) {
+      console.log("there was an error logging out", err);
+    }
   }
 
   return (
