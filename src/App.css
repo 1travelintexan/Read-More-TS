@@ -180,12 +180,12 @@ body {
   margin-bottom: 30px;
   height: 4rem;
 }
-#show-update-input {
+.show-update-input {
   color: red;
   background-color: #302f2f00;
   border: none;
 }
-#show-update-input:hover {
+.show-update-input:hover {
   color: rgb(173, 1, 1);
 }
 .update-input {

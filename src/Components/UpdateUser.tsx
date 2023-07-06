@@ -68,7 +68,7 @@ function UpdateUser({ currentUser }: IProps) {
           <div className="update-info-row">
             <h4 className="update-info">{currentUser.username}</h4>
             <button
-              id="show-update-input"
+              className="show-update-input"
               onClick={handleShowForm}
               name="usernameBtn"
             >
@@ -95,7 +95,7 @@ function UpdateUser({ currentUser }: IProps) {
           <div className="update-info-row">
             <h4 className="update-info">{currentUser.email}</h4>
             <button
-              id="show-update-input"
+              className="show-update-input"
               onClick={handleShowForm}
               name="emailBtn"
             >
